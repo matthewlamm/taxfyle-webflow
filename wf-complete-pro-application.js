@@ -1,7 +1,17 @@
+var singleLineInputs = ['email','address','city','zip'];
+
 var progressBar = $("#progress-bar");
 //VALIDTE FORM ON PAGE LOAD
 $(document).ready(function () {
   //TODO Input everything from localStorage
+  //TODO Single line inputs
+  $.map(singleLineInputs, function(key){
+    var value = localStorage.getItem(key);
+    $('#'+key+'').val(value);
+  });
+  //TODO Single dropdown inputs
+  //TODO Tag selects
+  //TODO Multi selects
   validateStep(1), validateStep(2), validateStep(3), validateStep(4), validateStep(5), moveProgressBar(currentStep);
 });
 //DROPDOWN FUNCTIONALITY
