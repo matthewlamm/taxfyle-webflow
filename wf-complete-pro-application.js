@@ -1,10 +1,9 @@
-var singleLineInputs = ['email','address','city','zip'];
-
 var progressBar = $("#progress-bar");
 //VALIDTE FORM ON PAGE LOAD
 $(document).ready(function () {
   //TODO Input everything from localStorage
   //TODO Single line inputs
+  var singleLineInputs = ['email','address','city','zip'];
   $.map(singleLineInputs, function(key){
     var value = localStorage.getItem(key);
     $('#'+key+'').val(value);
