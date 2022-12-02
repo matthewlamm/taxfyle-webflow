@@ -240,10 +240,7 @@ function validateStep(currentStep) {
         $(n).removeClass("is--active");
       });
   } else console.log("step " + currentStep + " is complete"), submitBtn.removeClass("is--btn-inactive").css("pointer-events", "auto");
-  0 == $(".c-nav-dd_link.is--active").length, $(".c-breadcrumb-holder").removeClass("is--active"), 
-  $.map(inputs, function(n){
-    localStorage.setItem(n.id, n.value);
-  });
+  0 == $(".c-nav-dd_link.is--active").length, $(".c-breadcrumb-holder").removeClass("is--active"),saveToLocalStorage(inputs);
 }
 //mobile breadcrumb menu
 $(".c-nav-dd_link").click(function () {
@@ -251,4 +248,10 @@ $(".c-nav-dd_link").click(function () {
 });
 function moveProgressBar(o) {
   console.log("moving to step " + o), progressBar.css("transform", "translate(-" + (100 - 20 * o) + "%)");
+}
+
+function saveToLocalStorage(inputs){
+  $.map(inputs, function(n){
+    localStorage.setItem(n.id, n.value);
+  });
 }
