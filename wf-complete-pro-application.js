@@ -1,15 +1,6 @@
 var progressBar = $("#progress-bar");
 //VALIDTE FORM ON PAGE LOAD
 $(document).ready(function () {
-  //TODO Input everything from localStorage
-  //TODO Single line inputs
-  $.map(singleLineInputs, function(key){
-    var value = localStorage.getItem(key);
-    $('#'+key+'').val(value);
-  })
-  //TODO Single dropdown inputs
-  //TODO Tag selects
-  //TODO Multi selects
   validateStep(1), validateStep(2), validateStep(3), validateStep(4), validateStep(5), moveProgressBar(currentStep);
 });
 //DROPDOWN FUNCTIONALITY
@@ -248,7 +239,7 @@ function validateStep(currentStep) {
         $(n).removeClass("is--active");
       });
   } else console.log("step " + currentStep + " is complete"), submitBtn.removeClass("is--btn-inactive").css("pointer-events", "auto");
-  0 == $(".c-nav-dd_link.is--active").length && (console.log("no active steps"), $(".c-breadcrumb-holder").removeClass("is--active"));
+  0 == $(".c-nav-dd_link.is--active").length, $(".c-breadcrumb-holder").removeClass("is--active"));
 }
 //mobile breadcrumb menu
 $(".c-nav-dd_link").click(function () {
