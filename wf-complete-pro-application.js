@@ -218,6 +218,7 @@ function validateStep(currentStep) {
     inputs = $('input[associated-step="' + currentStep + '"]'),
     selects = $('select[associated-step="' + currentStep + '"]'),
     checks = $('input[type="checkbox"][associated-step="' + currentStep + '"]');
+
   if (
     ((inputCheck = $(inputs).map(function () {
       return $(this).val();
@@ -239,7 +240,10 @@ function validateStep(currentStep) {
         $(n).removeClass("is--active");
       });
   } else console.log("step " + currentStep + " is complete"), submitBtn.removeClass("is--btn-inactive").css("pointer-events", "auto");
-  0 == $(".c-nav-dd_link.is--active").length, $(".c-breadcrumb-holder").removeClass("is--active");
+  0 == $(".c-nav-dd_link.is--active").length, $(".c-breadcrumb-holder").removeClass("is--active"), 
+  $.map(inputs, function(n){
+    localStorage.setItem(n.id, n.value);
+  });
 }
 //mobile breadcrumb menu
 $(".c-nav-dd_link").click(function () {
