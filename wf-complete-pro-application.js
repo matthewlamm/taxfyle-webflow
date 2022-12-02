@@ -239,7 +239,7 @@ function validateStep(currentStep) {
         $(n).removeClass("is--active");
       });
   } else console.log("step " + currentStep + " is complete"), submitBtn.removeClass("is--btn-inactive").css("pointer-events", "auto");
-  0 == $(".c-nav-dd_link.is--active").length, $(".c-breadcrumb-holder").removeClass("is--active"));
+  0 == $(".c-nav-dd_link.is--active").length, $(".c-breadcrumb-holder").removeClass("is--active");
 }
 //mobile breadcrumb menu
 $(".c-nav-dd_link").click(function () {
