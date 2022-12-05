@@ -255,5 +255,12 @@ function saveToLocalStorage(inputs, selects){
   $.map(inputs, function(n){
     localStorage.setItem(n.id, n.value);
   });
-  console.log(selects)
+  $.map(selects, function(select){
+    var toStorage = "";
+    $.map(select, function(n){
+      toStorage = toStorage + ','+$(n).val();
+    })
+    toStorage = toStorage.substring(1);
+    localStorage.setItem(select.id, toStorage);
+  })
 }
