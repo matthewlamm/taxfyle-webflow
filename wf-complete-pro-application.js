@@ -1,7 +1,7 @@
 var progressBar = $("#progress-bar");
 //VALIDTE FORM ON PAGE LOAD
 $(document).ready(function () {
-  console.log('script v1');
+  console.log('script v2');
   validateStep(1), validateStep(2), validateStep(3), validateStep(4), validateStep(5), moveProgressBar(currentStep);
 });
 //DROPDOWN FUNCTIONALITY
