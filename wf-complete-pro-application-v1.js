@@ -257,7 +257,8 @@ function saveToLocalStorage(inputs, selects){
   });
   $.map(selects, function(select){
       var toStorage = ""
-      var selectValues = $(select).val();
+      var selectValues = []
+      selectValues.push($(select).val());
       $.map(selectValues, function(n){
           toStorage = toStorage + ',' + n;
       })
