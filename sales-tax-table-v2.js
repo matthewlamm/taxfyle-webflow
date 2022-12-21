@@ -1,4 +1,4 @@
-export const salesTaxTable = [
+const salesTaxTable = [
     {"zipCode": 99501, "percentage": "0%"},
     {"zipCode": 99502, "percentage": "0%"},
     {"zipCode": 99503, "percentage": "0%"},
