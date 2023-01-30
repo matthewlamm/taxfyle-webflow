@@ -247,7 +247,11 @@ function validateStep(currentStep) {
 $(".c-nav-dd_link").click(function () {
   $(".c-nav-dd").trigger("w-close");
 });
+
 function moveProgressBar(o) {
+  if(o == 0){
+    console.log("moving to step " + o), progressBar.css("transform", "translate(-" + (99 - 20 * o) + "%)");
+  }
   console.log("moving to step " + o), progressBar.css("transform", "translate(-" + (100 - 20 * o) + "%)");
 }
 
