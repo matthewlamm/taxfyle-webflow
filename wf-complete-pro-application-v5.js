@@ -23,23 +23,22 @@ $(".c-form_dd.is--fin-dd").click(function () {
     (currentPressed = null),
     (selectedList = $((selectedDropdown = this)).find(".c-form_dd-list")),
     (selectedOptions = $(selectedList).find(".c-form_dd-link").not(":eq(0)"));
-}),
-  $(document).keyup(function (e) {
-    if (e.keyCode < 91 && e.keyCode > 47) {
-      if (
-        ((lastPressed = currentPressed),
-        (currentPressed = e.key.toUpperCase()),
-        (letterMatchedItems = $.map(selectedOptions, function (e) {
-          return e.text.charAt(0) == currentPressed ? e : void 0;
-        })),
-        0 == letterMatchedItems.length)
-      )
-        return;
-      lastPressed !== currentPressed || repeatLetterCount >= letterMatchedItems.length - 1
-        ? ((repeatLetterCount = 0), goToTargetItem((targetItem = letterMatchedItems[0])))
-        : lastPressed == currentPressed && (repeatLetterCount++, goToTargetItem((targetItem = letterMatchedItems[repeatLetterCount])));
-    }
-  });
+})
+// $(document).keyup(function (e) {
+//     if (
+//       ((lastPressed = currentPressed),
+//       (currentPressed = e.key.toUpperCase()),
+//       (letterMatchedItems = $.map(selectedOptions, function (e) {
+//         return e.text.charAt(0) == currentPressed ? e : void 0;
+//       })),
+//       0 == letterMatchedItems.length)
+//     )
+//       return;
+//     lastPressed !== currentPressed || repeatLetterCount >= letterMatchedItems.length - 1
+//       ? ((repeatLetterCount = 0), goToTargetItem((targetItem = letterMatchedItems[0])))
+//       : lastPressed == currentPressed && (repeatLetterCount++, goToTargetItem((targetItem = letterMatchedItems[repeatLetterCount])));
+//   }
+// );
 //TAG MULTISELECT FIELDS INFO. Array names must match data tag value
 var tagSelectionArrays = { states: [], languages: [] },
   currentDataTag = null;
