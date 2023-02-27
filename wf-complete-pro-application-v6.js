@@ -106,31 +106,31 @@ $('.c-form_multi-item[data-tag="item"]').click(function () {
       renderTags(tagSelectionArrays[currentDataTag]),
       validateStep(currentStep);
   });
-var selectedSearchInput = $('[data-search="input"]').first(),
-  selectedSearchContainer = null,
-  selectedSearchList = null,
-  selectedSearchOptions = null;
-function typeTest() {
-  selectedSearchInput.on("keyup", function () {
-    selectedSearchOptions.each(function () {
-      $(this).text().toLowerCase().includes(selectedSearchInput.val().toLowerCase()) ? $(this).show() : $(this).hide();
-    });
-  });
-}
-function showAllSearchOptions() {
-  selectedSearchOptions.each(function () {
-    $(this).show();
-  });
-}
-$("input").click(function () {
-  $(this).is('[data-search="input"]') &&
-    ((selectedSearchInput = $(this)),
-    (selectedSearchContainer = $(this).closest('[data-search="container"]')),
-    (selectedSearchList = selectedSearchContainer.find('[data-search="list"]')),
-    (selectedSearchOptions = selectedSearchList.children()),
-    showAllSearchOptions(),
-    typeTest());
-});
+// var selectedSearchInput = $('[data-search="input"]').first(),
+//   selectedSearchContainer = null,
+//   selectedSearchList = null,
+//   selectedSearchOptions = null;
+// function typeTest() {
+//   selectedSearchInput.on("keyup", function () {
+//     selectedSearchOptions.each(function () {
+//       $(this).text().toLowerCase().includes(selectedSearchInput.val().toLowerCase()) ? $(this).show() : $(this).hide();
+//     });
+//   });
+// }
+// function showAllSearchOptions() {
+//   selectedSearchOptions.each(function () {
+//     $(this).show();
+//   });
+// }
+// $("input").click(function () {
+//   $(this).is('[data-search="input"]') &&
+//     ((selectedSearchInput = $(this)),
+//     (selectedSearchContainer = $(this).closest('[data-search="container"]')),
+//     (selectedSearchList = selectedSearchContainer.find('[data-search="list"]')),
+//     (selectedSearchOptions = selectedSearchList.children()),
+//     showAllSearchOptions(),
+//     typeTest());
+// });
 //MULTISELECT FUNCTIONALITY
 var multiSelectedInput,
   multiSelectionArrays = { specialties: [], ownedSoftware: [], softwareExp: [] };
