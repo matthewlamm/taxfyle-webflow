@@ -86,7 +86,7 @@ $('.c-form_multi-item[data-tag="item"]').click(function () {
   //clear total selection on x click
   $(".c-form_tag-close-container").click(function () {
     getDataTagValue(this),
-      $(this).closest(".c-form_field").find("input").val(""),
+//      $(this).closest(".c-form_field").find("input").val(""),
       $(this).closest(".c-form_input").find("select").val([]),
       (tagSelectionArrays[currentDataTag] = []),
       renderTags(tagSelectionArrays[currentDataTag]),
