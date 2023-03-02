@@ -217,13 +217,14 @@ function validateStep(currentStep) {
     submitBtn = $('.c-btn[data-step-num="' + currentStep + '"]'),
     inputs = $('input[associated-step="' + currentStep + '"]'),
     selects = $('select[associated-step="' + currentStep + '"]'),
+    selectsRequired = $('select[associated-step="' + currentStep + '"]:not([isRequired="false"])'),
     checks = $('input[type="checkbox"][associated-step="' + currentStep + '"]');
 
   if (
     ((inputCheck = $(inputs).map(function () {
       return $(this).val();
     })),
-    (selectCheck = $(selects+':not([isRequired="false"])').map(function () {
+    (selectCheck = $(selectsRequired).map(function () {
       return $(this).val().length;
     })),
     (checkCheck = $(checks).map(function () {
