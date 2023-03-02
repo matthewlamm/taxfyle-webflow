@@ -223,7 +223,7 @@ function validateStep(currentStep) {
     ((inputCheck = $(inputs).map(function () {
       return $(this).val();
     })),
-    (selectCheck = $(selects).map(function () {
+    (selectCheck = $(selects+':not([isRequired="false"])').map(function () {
       return $(this).val().length;
     })),
     (checkCheck = $(checks).map(function () {
