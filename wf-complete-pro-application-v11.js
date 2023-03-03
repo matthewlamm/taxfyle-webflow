@@ -79,14 +79,19 @@ $('.c-form_multi-item[data-tag="item"]').click(function () {
       "Chinese" == a ? (a = "zh") : "Spanish" == a ? (a = "es") : "French" == a ? (a = "fr") : "Japanese" == a ? (a = "ja") : "Korean" == a ? (a = "ko") : "German" == a ? (a = "de") : "Arabic" == a && (a = "ar"),
       tagSelectionArrays[currentDataTag].push(a),
       renderTags(tagSelectionArrays[currentDataTag])),
-//    $(this).closest(".c-form_field").find("input").val(""),
+    $(this).closest(".c-form_field").find("input").val(""),
     $(this).closest(".c-form_input").find("select").val(tagSelectionArrays[currentDataTag]),
     validateStep(currentStep);
+    var inputName = $(this).attr('data-tag-item');
+    console.log(inputName);
+    //Clear search bar and reset filter
+    var clearBtn = $('.c-form_tags-clear-btn[clear-btn="'+inputName+'"]');
+    clearBtn.click();
 }),
   //clear total selection on x click
   $(".c-form_tag-close-container").click(function () {
     getDataTagValue(this),
-//      $(this).closest(".c-form_field").find("input").val(""),
+      $(this).closest(".c-form_field").find("input").val(""),
       $(this).closest(".c-form_input").find("select").val([]),
       (tagSelectionArrays[currentDataTag] = []),
       renderTags(tagSelectionArrays[currentDataTag]),
