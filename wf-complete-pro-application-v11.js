@@ -84,6 +84,7 @@ $('.c-form_multi-item[data-tag="item"]').click(function () {
     validateStep(currentStep);
     var inputName = $(this).attr('data-tag-item');
     console.log(inputName);
+
     //Clear search bar and reset filter
     var clearBtn = $('.c-form_tags-clear-btn[clear-btn="'+inputName+'"]');
     clearBtn.click();
@@ -97,6 +98,8 @@ $('.c-form_multi-item[data-tag="item"]').click(function () {
       renderTags(tagSelectionArrays[currentDataTag]),
       $(this).closest(".c-form_input").find(".c-form_multi-item").removeClass("is--active"),
       validateStep(currentStep);
+      var clearBtn = $('.c-form_tags-clear-btn[clear-btn="'+inputName+'"]');
+      clearBtn.click();
   }),
   //clear individual tag on tag x click
   $(document).on("click", ".c-tag_close-container", function () {
