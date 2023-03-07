@@ -231,7 +231,8 @@ function validateStep(currentStep) {
     checks = $('input[type="checkbox"][associated-step="' + currentStep + '"]');
 
   if (
-    ((emailCheck = $(inputs).map(function () {
+    (
+    (emailInput = $(inputs).map(function () {
       if($(this).attr('id') == 'email'){
         return $(this).val()
       };
@@ -245,7 +246,7 @@ function validateStep(currentStep) {
     (checkCheck = $(checks).map(function () {
       return $(this).is(":checked");
     })),
-    $.inArray(!1, checkCheck) >= 0 || $.inArray(0, selectCheck) >= 0 || $.inArray("undefined", inputCheck) >= 0 || $.inArray("", inputCheck) >= 0 || !validateEmail(emailCheck[0]))
+    $.inArray(!1, checkCheck) >= 0 || $.inArray(0, selectCheck) >= 0 || $.inArray("undefined", inputCheck) >= 0 || $.inArray("", inputCheck) >= 0 || (emailInput[0] != undefined && validateEmail(emailInput[0]) == false))
   )) {
     for (console.log("step " + currentStep + " is not complete"), submitBtn.addClass("is--btn-inactive").css("pointer-events", "none"); numNextLinks > 0; )
       nextLinks.push($(".c-breadcrumb[data-step-target=" + (currentStep + numNextLinks) + "]")), nextNavLinks.push($(".c-nav-dd_link[data-step-target=" + (currentStep + numNextLinks) + "]")), numNextLinks--;
