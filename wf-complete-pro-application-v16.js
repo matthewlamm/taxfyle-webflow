@@ -179,6 +179,11 @@ function goToStep(targetNum) {
   var currentItems = $("*[data-step-num]").filter(function () {
     return "none" != $(this).css("display");
   });
+  if(currentStep == 0){
+    $('.c-breadcrumb-holder').hide();
+  }else{
+    $('.c-breadcrumb-holder').show();
+  }
   $('.c-breadcrumb[data-step-target="' + currentStep + '"]').removeClass("is--current"),
     $('.c-breadcrumb[data-step-target="' + currentStep + '"]')
       .find(".t-breadcrumb_link-txt")
