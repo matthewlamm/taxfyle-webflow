@@ -182,7 +182,12 @@ function goToStep(targetNum) {
   var currentItems = $("*[data-step-num]").filter(function () {
     return "none" != $(this).css("display");
   });
-  $('.c-breadcrumb-holder').show();
+  if(currentStep == 0 && targetNum == 1){
+    $('.c-breadcrumb-holder').hide();
+  }else{
+    $('.c-breadcrumb-holder').show();
+  }
+
   $('.c-breadcrumb[data-step-target="' + currentStep + '"]').removeClass("is--current"),
     $('.c-breadcrumb[data-step-target="' + currentStep + '"]')
       .find(".t-breadcrumb_link-txt")
