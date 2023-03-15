@@ -1,9 +1,12 @@
 var progressBar = $("#progress-bar");
 //VALIDTE FORM ON PAGE LOAD
 $(document).ready(function () {
-  console.log('script v3');
   validateStep(1), validateStep(2), validateStep(3), validateStep(4), validateStep(5), moveProgressBar(currentStep);
+
+  //REMOVE BREADCRUMBS ON STEP 0
+  $('.c-breadcrumb-holder').hide();
 });
+
 //DROPDOWN FUNCTIONALITY
 var selectedDropdown = null,
   selectedList = null,
@@ -179,11 +182,6 @@ function goToStep(targetNum) {
   var currentItems = $("*[data-step-num]").filter(function () {
     return "none" != $(this).css("display");
   });
-  if(currentStep == 0){
-    $('.c-breadcrumb-holder').hide();
-  }else{
-    $('.c-breadcrumb-holder').show();
-  }
   $('.c-breadcrumb[data-step-target="' + currentStep + '"]').removeClass("is--current"),
     $('.c-breadcrumb[data-step-target="' + currentStep + '"]')
       .find(".t-breadcrumb_link-txt")
