@@ -228,6 +228,7 @@ $('a[data-step="btn"]').click(function () {
   $('input[type="checkbox"]').change(function (e) {
     validateStep(currentStep);
   });
+
 //STEP VALIDATION UTILITY FUNCTION
 function validateStep(currentStep) {
   var numNextLinks = 5 - currentStep,
@@ -257,6 +258,11 @@ function validateStep(currentStep) {
     })),
     $.inArray(!1, checkCheck) >= 0 || $.inArray(0, selectCheck) >= 0 || $.inArray("undefined", inputCheck) >= 0 || $.inArray("", inputCheck) >= 0 || (emailInput[0] != undefined && validateEmail(emailInput[0]) == false))
   )) {
+      if(emailInput && emailInput[0] != ''){
+        if(!validateEmail(emailInput[0])){
+            $('#email').addClass('is--input-inactive');
+        }
+      }
     for (console.log("step " + currentStep + " is not complete"), submitBtn.addClass("is--btn-inactive").css("pointer-events", "none"); numNextLinks > 0; )
       nextLinks.push($(".c-breadcrumb[data-step-target=" + (currentStep + numNextLinks) + "]")), nextNavLinks.push($(".c-nav-dd_link[data-step-target=" + (currentStep + numNextLinks) + "]")), numNextLinks--;
     $.map(nextLinks, function (n) {
@@ -265,7 +271,11 @@ function validateStep(currentStep) {
       $.map(nextNavLinks, function (n) {
         $(n).removeClass("is--active");
       });
-  } else console.log("step " + currentStep + " is complete"), submitBtn.removeClass("is--btn-inactive").css("pointer-events", "auto");
+  } else 
+  if(emailInput){
+        $('#email').removeClass('is--input-inactive');
+  }
+  console.log("step " + currentStep + " is complete"), submitBtn.removeClass("is--btn-inactive").css("pointer-events", "auto");
   0 == $(".c-nav-dd_link.is--active").length, $(".c-breadcrumb-holder").removeClass("is--active"),saveToLocalStorage(inputs, selects);
 }
 //mobile breadcrumb menu
