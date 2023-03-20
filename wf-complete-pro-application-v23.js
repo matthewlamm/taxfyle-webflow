@@ -173,6 +173,10 @@ function multiSelectWipe(item){
 var multiSelectedInput,
   multiSelectionArrays = { specialties: [], ownedSoftware: [], softwareExp: [] };
 $('.c-form_multi-item[data-multi="item"]').click(function () {
+  var wipeSelect = (this).closest(".c-form_input").data("multi-input").find('.c-form_multi-item[data-multi-none="true"]');
+  if(wipSelect && $(this).attr('data-multi-none' !== 'true') && !$(wipeSelect).hasClass('is--active')){
+    console.log("none exists, is active,  and smoebody clicked something else");
+  }
   if($(this).attr('data-multi-none') == 'true' && !$(this).hasClass('is--active')){
     console.log('starting wipe');
     multiSelectWipe(this)
