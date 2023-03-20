@@ -162,6 +162,11 @@ function multiSelectWipe(item){
     console.log(select);
     select.val('None');
     multiSelectionArrays[inputName] = ['None'];
+
+    //update visuals
+    $(item).addClass('is--active');
+    $(item).find(".t-input").addClass("is--bold is--tc-blue");
+    $(item).find(".c-form_multi-check-container").addClass("is--active");
   }
 }
 
@@ -169,6 +174,7 @@ var multiSelectedInput,
   multiSelectionArrays = { specialties: [], ownedSoftware: [], softwareExp: [] };
 $('.c-form_multi-item[data-multi="item"]').click(function () {
   if($(this).attr('data-multi-none') == 'true' && !$(this).hasClass('is--active')){
+    console.log('starting wipe');
     multiSelectWipe(this)
   }else{
     var t = $(this).text(),
