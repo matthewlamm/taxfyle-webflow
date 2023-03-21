@@ -196,8 +196,7 @@ $('.c-form_multi-item[data-multi="item"]').click(function () {
       $(this).parent().siblings("select").val(multiSelectionArrays[i]),
       validateStep(currentStep);
   }
-// }
-),
+}),
   //TABS FUNCTIONALITY
   //Take value from c-form_tabs and change value of the hidden select
   $(".c-form_tab").click(function () {
