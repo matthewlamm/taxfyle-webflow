@@ -174,7 +174,7 @@ function multiSelectWipe(item){
 var multiSelectedInput,
   multiSelectionArrays = { specialties: [], ownedSoftware: [], softwareExp: [] };
 $('.c-form_multi-item[data-multi="item"]').click(function () {
-  // var wipeSelect = $(this).closest(".c-form_input").find('.c-form_multi-item[data-multi-none="true"]');
+  var wipeSelect = $(this).closest(".c-form_input").find('.c-form_multi-item[data-multi-none="true"]');
   // if(wipeSelect && $(this).attr('data-multi-none' !== 'true') && !$(wipeSelect).hasClass('is--active')){
   //   console.log("none exists, is active,  and smoebody clicked something else");
   // }
