@@ -145,32 +145,31 @@ $('.c-form_multi-item[data-tag="item"]').click(function () {
 //     typeTest());
 // });
 //MULTISELECT FUNCTIONALITY
+
 //multi-select none Utility function
+function multiSelectWipe(item){
+  if($(item).attr('data-multi-none') == 'true'){
+    var inputName = $(item).attr('input-name')
+    var select = $('select[input-name ='+inputName+']');
+    var inputVisual = $('.c-form_input[data-multi-input = '+inputName+']')
+    var options = inputVisual.find('.c-form_multi-item')
+    options.each(function(){
+      if($(this).attr('data-multi-none') !== 'true'){
+        $(this).removeClass('is--active');
+        $(this).find(".t-input").removeClass("is--bold is--tc-blue");
+        $(this).find(".c-form_multi-check-container").removeClass("is--active");
+      }
+    })
+    console.log(select);
+    select.val('None');
+    multiSelectionArrays[inputName] = ['None'];
 
-
-// function multiSelectWipe(item){
-//   if($(item).attr('data-multi-none') == 'true'){
-//     var inputName = $(item).attr('input-name')
-//     var select = $('select[input-name ='+inputName+']');
-//     var inputVisual = $('.c-form_input[data-multi-input = '+inputName+']')
-//     var options = inputVisual.find('.c-form_multi-item')
-//     options.each(function(){
-//       if($(this).attr('data-multi-none') !== 'true'){
-//         $(this).removeClass('is--active');
-//         $(this).find(".t-input").removeClass("is--bold is--tc-blue");
-//         $(this).find(".c-form_multi-check-container").removeClass("is--active");
-//       }
-//     })
-//     console.log(select);
-//     select.val('None');
-//     multiSelectionArrays[inputName] = ['None'];
-
-//     //update visuals
-//     $(item).addClass('is--active');
-//     $(item).find(".t-input").addClass("is--bold is--tc-blue");
-//     $(item).find(".c-form_multi-check-container").addClass("is--active");
-//   }
-// }
+    //update visuals
+    $(item).addClass('is--active');
+    $(item).find(".t-input").addClass("is--bold is--tc-blue");
+    $(item).find(".c-form_multi-check-container").addClass("is--active");
+  }
+}
 
 var multiSelectedInput,
   multiSelectionArrays = { specialties: [], ownedSoftware: [], softwareExp: [] };
@@ -180,10 +179,10 @@ $('.c-form_multi-item[data-multi="item"]').click(function () {
   //   console.log("none exists, is active,  and smoebody clicked something else");
   // }
 
-  // if($(this).attr('data-multi-none') == 'true' && !$(this).hasClass('is--active')){
-  //   console.log('starting wipe');
-  //   multiSelectWipe(this)
-  // }else{
+  if($(this).attr('data-multi-none') == 'true' && !$(this).hasClass('is--active')){
+    console.log('starting wipe');
+    multiSelectWipe(this)
+  }else{
     var t = $(this).text(),
       i = $(this).closest(".c-form_input").data("multi-input");
     $(this).hasClass("is--active")
