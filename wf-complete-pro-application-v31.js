@@ -175,8 +175,17 @@ var multiSelectedInput,
   multiSelectionArrays = { specialties: [], ownedSoftware: [], softwareExp: [] };
 $('.c-form_multi-item[data-multi="item"]').click(function () {
   var wipeSelect = $(this).closest(".c-form_input").find('.c-form_multi-item[data-multi-none="true"]');
-  if(wipeSelect !== undefined && $(this).attr('data-multi-none') !== 'true' && !$(wipeSelect).hasClass('is--active')){
-    console.log("none exists, is active,  and smoebody clicked something else");
+  if(wipeSelect !== undefined && $(this).attr('data-multi-none') !== 'true' && $(wipeSelect).hasClass('is--active')){
+    console.log("wipe btn exists, is active,  and smoebody clicked something else");
+    
+    //update visual on "none"
+    $(wipeSelect).removeClass('is--active');
+    $(wipeSelect).find(".t-input").removeClass("is--bold is--tc-blue");
+    $(wipeSelect).find(".c-form_multi-check-container").removeClass("is--active");
+
+    //update the select
+    var inputName = $(this).closest(".c-form_input").data("multi-input");
+    var select = $('select[input-name ='+inputName+']');
   }
 
   if($(this).attr('data-multi-none') == 'true' && !$(this).hasClass('is--active')){
