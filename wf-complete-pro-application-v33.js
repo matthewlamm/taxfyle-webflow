@@ -190,7 +190,7 @@ $('.c-form_multi-item[data-multi="item"]').click(function () {
     multiSelectionArrays[inputName] = $.grep(multiSelectionArrays[inputName], function(i){
       return i != 'None';
     })
-    selevt.val(multiSelectionArrays[inputName]);
+    select.val(multiSelectionArrays[inputName]);
   }
 
   if($(this).attr('data-multi-none') == 'true' && !$(this).hasClass('is--active')){
