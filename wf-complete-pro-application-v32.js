@@ -186,6 +186,11 @@ $('.c-form_multi-item[data-multi="item"]').click(function () {
     //update the select
     var inputName = $(this).closest(".c-form_input").data("multi-input");
     var select = $('select[input-name ='+inputName+']');
+    //rchange multiSeletion array
+    multiSelectionArrays[inputName] = $.grep(multiSelectionArrays[inputName], function(i){
+      return i != 'None';
+    })
+    selevt.val(multiSelectionArrays[inputName]);
   }
 
   if($(this).attr('data-multi-none') == 'true' && !$(this).hasClass('is--active')){
