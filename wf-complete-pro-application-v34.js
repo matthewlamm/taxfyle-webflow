@@ -281,53 +281,52 @@ $('a[data-step="btn"]').click(function () {
 
 //STEP VALIDATION UTILITY FUNCTION
 function validateStep(currentStep) {
+  //variable setup
   var numNextLinks = 5 - currentStep,
-    nextLinks = [],
-    nextNavLinks = [],
-    submitBtn = $('.c-btn[data-step-num="' + currentStep + '"]'),
-    inputs = $('input[associated-step="' + currentStep + '"]'),
-    selects = $('select[associated-step="' + currentStep + '"]'),
-    selectsRequired = $('select[associated-step="' + currentStep + '"]:not([isRequired="false"])'),
-    checks = $('input[type="checkbox"][associated-step="' + currentStep + '"]');
+      nextLinks = [],
+      nextNavLinks = [],
+      submitBtn = $('.c-btn[data-step-num="' + currentStep + '"]'),
+      inputs = $('input[associated-step="' + currentStep + '"]'),
+      selects = $('select[associated-step="' + currentStep + '"]'),
+      selectsRequired = $('select[associated-step="' + currentStep + '"]:not([isRequired="false"])'),
+      checks = $('input[type="checkbox"][associated-step="' + currentStep + '"]');
 
   if (
     (
-    (emailInput = $(inputs).map(function () {
-      if($(this).attr('id') == 'email'){
-        return $(this).val()
-      };
-    })),
-    ((inputCheck = $(inputs).map(function () {
-      return $(this).val();
-    })),
-    (selectCheck = $(selectsRequired).map(function () {
-      return $(this).val().length;
-    })),
-    (checkCheck = $(checks).map(function () {
-      return $(this).is(":checked");
-    })),
-    $.inArray(!1, checkCheck) >= 0 || $.inArray(0, selectCheck) >= 0 || $.inArray("undefined", inputCheck) >= 0 || $.inArray("", inputCheck) >= 0 || (emailInput[0] != undefined && validateEmail(emailInput[0]) == false))
-  )) {
-      if(emailInput && emailInput[0] != ''){
-        if(!validateEmail(emailInput[0])){
-            $('#email').addClass('is--input-inactive');
-        }
+      (emailInput = $(inputs).map(function () {
+        if($(this).attr('id') == 'email'){
+          return $(this).val()
+        };
+      })),
+      ((inputCheck = $(inputs).map(function () {
+        return $(this).val();
+      })),
+       (selectCheck = $(selectsRequired).map(function () {
+        return $(this).val().length;
+      })),
+       (checkCheck = $(checks).map(function () {
+        return $(this).is(":checked");
+      })),
+       $.inArray(!1, checkCheck) >= 0 || $.inArray(0, selectCheck) >= 0 || $.inArray("undefined", inputCheck) >= 0 || $.inArray("", inputCheck) >= 0 || (emailInput[0] != undefined && validateEmail(emailInput[0]) == false))
+    )) {
+    if(emailInput && emailInput[0] != ''){
+      if(!validateEmail(emailInput[0])){
+        $('#email').addClass('is--input-inactive');
       }
+    }
     for (console.log("step " + currentStep + " is not complete"), submitBtn.addClass("is--btn-inactive").css("pointer-events", "none"); numNextLinks > 0; )
       nextLinks.push($(".c-breadcrumb[data-step-target=" + (currentStep + numNextLinks) + "]")), nextNavLinks.push($(".c-nav-dd_link[data-step-target=" + (currentStep + numNextLinks) + "]")), numNextLinks--;
     $.map(nextLinks, function (n) {
       $(n).find(".t-breadcrumb_link-txt").addClass("is--inactive"), $(n).addClass("is--inactive");
     }),
       $.map(nextNavLinks, function (n) {
-        $(n).removeClass("is--active");
-      });
-  } else 
-  if(emailInput){
-        $('#email').removeClass('is--input-inactive');
-  }
+      $(n).removeClass("is--active");
+    });
+  } else if(emailInput){
+    $('#email').removeClass('is--input-inactive');
   console.log("step " + currentStep + " is complete"), submitBtn.removeClass("is--btn-inactive").css("pointer-events", "auto");
   0 == $(".c-nav-dd_link.is--active").length, $(".c-breadcrumb-holder").removeClass("is--active"),saveToLocalStorage(inputs, selects);
-}
+}};
 //mobile breadcrumb menu
 $(".c-nav-dd_link").click(function () {
   $(".c-nav-dd").trigger("w-close");
