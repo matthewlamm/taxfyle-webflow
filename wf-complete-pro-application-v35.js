@@ -311,8 +311,15 @@ function validateStep(currentStep) {
     )) {
     if(emailInput && emailInput[0] != ''){
       if(!validateEmail(emailInput[0])){
+        console.log('not empty and wrong')
         $('#email').addClass('is--input-inactive');
+      }else{
+        console.log('not empty and correct')
+        $('#email').removeClass('is--input-inactive');
       }
+    } else if(emailInput && emailInput[0] == ''){
+      console.log('empty email')
+      $('#email').removeClass('is--input-inactive');
     }
     for (console.log("step " + currentStep + " is not complete"), submitBtn.addClass("is--btn-inactive").css("pointer-events", "none"); numNextLinks > 0; )
       nextLinks.push($(".c-breadcrumb[data-step-target=" + (currentStep + numNextLinks) + "]")), nextNavLinks.push($(".c-nav-dd_link[data-step-target=" + (currentStep + numNextLinks) + "]")), numNextLinks--;
@@ -327,6 +334,7 @@ function validateStep(currentStep) {
   console.log("step " + currentStep + " is complete"), submitBtn.removeClass("is--btn-inactive").css("pointer-events", "auto");
   0 == $(".c-nav-dd_link.is--active").length, $(".c-breadcrumb-holder").removeClass("is--active"),saveToLocalStorage(inputs, selects);
 }};
+
 //mobile breadcrumb menu
 $(".c-nav-dd_link").click(function () {
   $(".c-nav-dd").trigger("w-close");
