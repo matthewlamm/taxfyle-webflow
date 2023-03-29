@@ -290,6 +290,7 @@ function validateStep(currentStep) {
       selects = $('select[associated-step="' + currentStep + '"]'),
       selectsRequired = $('select[associated-step="' + currentStep + '"]:not([isRequired="false"])'),
       checks = $('input[type="checkbox"][associated-step="' + currentStep + '"]');
+      
 
   if (
     (
@@ -309,7 +310,7 @@ function validateStep(currentStep) {
       })),
        $.inArray(!1, checkCheck) >= 0 || $.inArray(0, selectCheck) >= 0 || $.inArray("undefined", inputCheck) >= 0 || $.inArray("", inputCheck) >= 0 || (emailInput[0] != undefined && validateEmail(emailInput[0]) == false))
     )) {
-    if(emailInput && emailInput[0] != ''){
+    if(emailInput && emailInput[0] != '' && emailInput[0] != undefined){
       if(!validateEmail(emailInput[0])){
         console.log('not empty and wrong')
         $('#email').addClass('is--input-inactive');
