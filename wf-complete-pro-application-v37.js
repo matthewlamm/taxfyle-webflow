@@ -343,9 +343,9 @@ $(".c-nav-dd_link").click(function () {
 
 function moveProgressBar(o) {
   if(o == 0){
-    console.log("moving to step " + o), progressBar.css("transform", "translate(-" + (99 - 20 * o) + "%)");
+    console.log("moving to step " + o), progressBar.css("transform", "translate(-" + (99 - 25 * o) + "%)");
   }else{
-    console.log("moving to step " + o), progressBar.css("transform", "translate(-" + (100 - 20 * o) + "%)");
+    console.log("moving to step " + o), progressBar.css("transform", "translate(-" + (100 - 25 * o) + "%)");
   }
 }
 
